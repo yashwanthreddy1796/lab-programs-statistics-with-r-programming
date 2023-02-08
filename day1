@@ -1,0 +1,823 @@
+ITA0443 STATISTICS WITH R PROGRAMMING 
+                        LAB PROGRAMS
+NAME: B.YASHWANTH REDDY 
+R.NO: 191911560 
+DATE: 08-02-2023 
+COLLEGE NAME: SAVEETHA SCHOOL OF ENGINEERING
+
+ 1.BASIC OPERATIONS IN R
+
+1.Write The Commands To Perform Basic Arithmetic In R.
+
+Program:
+a<-2
+b<-4
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+
+Output:
+[1] 6
+[1] -2
+[1] 8
+[1] 0.5
+
+[Execution complete with exit code 0]
+
+2.  Display a String on R Console.
+
+Program:
+print("yashwanth")
+
+Output:
+[1] "yashwanth"
+
+[Execution complete with exit code 0]
+
+3. Declare Variables In R And Also Write The Commands For Retrieving The Value Of The   Stored Variables In R Console.
+
+Program:
+a<-2
+b<-4
+c<-5
+print(a)
+print(b)
+print(c)
+
+Output:
+[1] 2
+[1] 4
+[1] 5
+
+[Execution complete with exit code 0]
+
+4. Write an R script to calculate the area of Rectangle.
+
+Program:
+length<-5
+breadth<-8
+area<-length*breadth
+print(area)
+
+Output:
+[1] 40
+
+[Execution complete with exit code 0]
+
+
+5.Write Commands In R Console To Determine The Type Of Variable
+Program:
+a<-5
+b<-8.9
+c<-3-2i
+print(class(a))
+print(class(b))
+print(class(c))
+
+Output:
+[1] "numeric"
+[1] "numeric"
+[1] "complex"
+
+[Execution complete with exit code 0]
+
+
+6.Enumerate The Process To Check Whether A Given Input Is Numeric , Integer , Double, Complex  in  R.
+Program:
+a<-5
+is.numeric(a)
+b<-8.9000000
+is.double(b)
+c<-3-2i
+is.complex(c)
+
+Output:
+[1] TRUE
+[1] TRUE
+[1] TRUE
+
+[Execution complete with exit code 0]
+
+7. Illustration of Vector Arithmetic.
+
+Program:
+a=c(1,2,3,4,5,6)
+b=c(3,4,5,6,7,8)
+a+b
+a-b
+a*b
+a/b
+
+Output:
+[1]  4  6  8 10 12 14
+[1] -2 -2 -2 -2 -2 -2
+[1]  3  8 15 24 35 48
+[1] 0.3333333 0.5000000 0.6000000 0.6666667 0.7142857 0.7500000
+
+[Execution complete with exit code 0]
+
+8. Write an R Program to Take Input From User.
+Input name as “Jack” and age as 17.
+The program should display the output as
+“Hai , Jack next year you will be 18 years old”
+Program:
+name<-readline(prompt="enter your name:")
+age<-readline(prompt="enter your age:")
+print(paste("Hai",name,"next year you will be",age,"years old"))
+
+Input:
+Jack
+17
+
+Output:
+[1] "Hai  next year you will be  years old"
+
+[Execution complete with exit code 0]
+
+
+
+
+2.DATA STRUCTURES IN R
+
+1) Perform Matrix Addition & Subtraction in R
+Program:
+a<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+b<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+a+b
+a-b
+
+
+Output:
+   [,1] [,2] [,3]
+[1,]    2    4    6
+[2,]    8   10   12
+     [,1] [,2] [,3]
+[1,]    0    0    0
+[2,]    0    0    0
+
+
+[Execution complete with exit code 0]
+
+
+2) Perform Scalar multiplication and matrix multiplication  in R
+Program:
+a<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+a<-2*a
+print(a)
+b<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+a*b
+Output:
+    [,1] [,2] [,3]
+[1,]    2    4    6
+[2,]    8   10   12
+     [,1] [,2] [,3]
+[1,]    2    8   18
+[2,]   32   50   72
+
+
+[Execution complete with exit code 0]
+
+
+3) Find Transpose of the matrix in R.
+Program:
+a<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+print(t(a))
+Output:
+    [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+
+
+[Execution complete with exit code 0]
+
+
+4) Perform the operation of combining matrices in R using cbind() and rbind() functions.
+Program:
+x <- 1:5
+y <- 6:10
+z <- 11:15
+cbind(x, y, z)
+rbind(x, y, z)
+
+
+Output:
+    x  y  z
+[1,] 1  6 11
+[2,] 2  7 12
+[3,] 3  8 13
+[4,] 4  9 14
+[5,] 5 10 15
+  [,1] [,2] [,3] [,4] [,5]
+x    1    2    3    4    5
+y    6    7    8    9   10
+z   11   12   13   14   15
+
+
+[Execution complete with exit code 0]
+
+
+5) Deconstruct a matrix in R 
+Program:
+a<-matrix(c(1,2,3,4,5,6),
+nrow<-2,
+ncol<-3,
+byrow<-TRUE
+)
+c(a)
+
+
+Output:
+[1] 1 4 2 5 3 6
+
+
+[Execution complete with exit code 0]
+
+
+6) Perform array manipulation in R .
+Program:
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+array1 <- array(c(vector1,vector2),dim = c(3,3,2))
+vector3 <- c(9,1,0)
+vector4 <- c(6,0,11,3,14,1,2,6,9)
+array2 <- array(c(vector3,vector4),dim = c(3,3,2))
+matrix1 <- array1[,,2]
+matrix2 <- array2[,,2]
+matrix1+matrix2
+
+
+Output:
+    [,1] [,2] [,3]
+[1,]    7   19   19
+[2,]   15   12   14
+[3,]   12   12   26
+
+
+[Execution complete with exit code 0]
+
+
+7) Perform calculations across array elements in an array using the apply() function.
+Program:
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+new.array <- array(c(vector1,vector2),dim = c(3,3,2))
+print(new.array)
+result <- apply(new.array, c(1), sum)
+print(result)
+Output:
+, , 1
+
+
+     [,1] [,2] [,3]
+[1,]    5   10   13
+[2,]    9   11   14
+[3,]    3   12   15
+
+
+, , 2
+
+
+     [,1] [,2] [,3]
+[1,]    5   10   13
+[2,]    9   11   14
+[3,]    3   12   15
+
+
+[1] 56 68 60
+
+
+[Execution complete with exit code 0]
+
+
+8) Demonstrate Factor data structure in R.
+Program:
+data <- c("East","West","East","North","North","East","West","West","West","East","North")
+print(data)
+print(is.factor(data))
+factor_data <- factor(data)
+print(factor_data)
+print(is.factor(factor_data))
+
+
+Output:
+[1] "East"  "West"  "East"  "North" "North" "East"  "West"  "West"  "West" 
+[10] "East"  "North"
+[1] FALSE
+ [1] East  West  East  North North East  West  West  West  East  North
+Levels: East North West
+[1] TRUE
+
+
+[Execution complete with exit code 0]
+
+
+9) Create a data frame and print the structure of the data frame in R.
+Program:
+a<-data.frame(name<-c("virat","gill"),
+score<-c(200,100)
+)
+a
+str(a)
+Output:
+name....c..virat....gill.. score....c.200..100.
+1                      virat                  200
+2                       gill                  100
+'data.frame':	2 obs. of  2 variables:
+ $ name....c..virat....gill..: chr  "virat" "gill"
+ $ score....c.200..100.      : num  200 100
+
+
+[Execution complete with exit code 0]
+
+
+10) Demonstrate the creation of the S3 class in R.
+Program:
+a<-list(name = "kohli", age = 34, role = "cricketer")
+class(a) <- "cricketer_Info"
+a
+Output:
+
+
+$name
+[1] "kohli"
+
+
+$age
+[1] 34
+
+
+$role
+[1] "cricketer"
+
+
+attr(,"class")
+[1] "cricketer_Info"
+
+
+[Execution complete with exit code 0]
+
+
+11) Demonstrate the creation of the S4 class in R.
+Program:
+setClass("Employee_Info", slots=list(name="character", age="numeric", role="character"))
+employee1 <- new("Employee_Info", name = "Peter", age = 21, role = "Developer")
+employee1
+Output:
+An object of class "Employee_Info"
+Slot "name":
+[1] "Peter"
+
+
+Slot "age":
+[1] 21
+
+
+Slot "role":
+[1] "Developer"
+
+
+[Execution complete with exit code 0]
+
+12) Demonstrate the creation of a Reference class in R by defining a class called students with fields – Name, Age , GPA. Also illustrate how the fields of the object can be accessed using the $ operator. Modify the Name field by reassigning the name to Paul.
+Program:
+student <- setRefClass("student",
+fields = list(name = "character", age = "numeric", GPA = "numeric"))
+s <- student(name = "John", age = 21, GPA = 3.5)
+s
+s$name<-"paul"
+s
+Output:
+Reference class object of class "student"
+Field "name":
+[1] "John"
+Field "age":
+[1] 21
+Field "GPA":
+[1] 3.5
+Reference class object of class "student"
+Field "name":
+[1] "paul"
+Field "age":
+[1] 21
+Field "GPA":
+[1] 3.5
+
+
+[Execution complete with exit code 0]
+3.WORKING WITH LOOPING AND FUNCTIONS IN R
+1.Write a program to check whether an integer (entered by the user) is a prime number or not using control statements.
+Program:
+num = as.integer(readline(prompt="Enter a number: "))
+flag = 0
+if(num > 1) {
+flag = 1
+for(i in 2:(num-1)) {
+if ((num %% i) == 0) {
+flag = 0
+break
+}
+}
+} 
+if(num == 2)    
+flag = 1
+if(flag == 1) {
+print(paste(num,"is a prime number"))
+} else {
+print(paste(num,"is not a prime number"))
+}
+Input:20
+Output: 20 is not a prime number.
+2.Write a program to check whether a number entered by the user is a positive number or a negative number or zero.
+Program:
+num = as.double(readline(prompt="Enter a number: "))
+if(num > 0) {
+print("Positive number")
+} else {
+if(num == 0) {
+print("Zero")
+} else {
+print("Negative number")
+}
+}
+Input: 5
+Output: positive number
+
+
+3.Write a program to check whether a number is an Armstrong number or not using a while loop.
+Program:
+num = as.integer(readline(prompt="Enter a number: "))
+sum = 0
+temp = num
+while(temp > 0) {
+digit = temp %% 10
+sum = sum + (digit ^ 3)
+temp = floor(temp / 10)
+}
+if(num == sum) {
+print(paste(num, "is an Armstrong number"))
+} else {
+print(paste(num, "is not an Armstrong number"))
+}
+Input: 370
+Output: 370 is an armstrong number
+
+
+4.Write a program to demonstrate Repeat Loop in R
+Program:
+x = 1
+repeat {
+print(x)
+if (x > 4) {
+break
+} 
+x = x + 1
+}
+Output:
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+
+
+[Execution complete with exit code 0]
+
+
+5.Using functions to develop a simple calculator in R.
+Program:
+add <- function(x, y) {
+return(x + y)
+}
+subtract <- function(x, y) {
+return(x - y)
+}
+multiply <- function(x, y) {
+return(x * y)
+}
+divide <- function(x, y) {
+return(x / y)
+}
+print("Select operation.")
+print("1.Add")
+print("2.Subtract")
+print("3.Multiply")
+print("4.Divide")
+choice = as.integer(readline(prompt="Enter choice[1/2/3/4]: "))
+num1 = as.integer(readline(prompt="Enter first number: "))
+num2 = as.integer(readline(prompt="Enter second number: "))
+operator <- switch(choice,"+","-","*","/")
+result <- switch(choice, add(num1, num2), subtract(num1, num2), multiply(num1, num2), divide(num1, num2))
+print(paste(num1, operator, num2, "=", result))
+
+
+Output:
+[1] "Select operation."
+[1] "1.Add"
+[1] "2.Subtract"
+[1] "3.Multiply"
+[1] "4.Divide"
+Enter choice[1/2/3/4]: 
+Enter first number: 
+Enter second number: 
+[1] "NA  NA = "
+
+
+[Execution complete with exit code 0]
+
+
+6. Demonstrate the creation of a complex number in R.
+Program:
+x <- 2
+y <- 1
+z <- complex(real = x, imaginary = y)
+z
+
+
+Output:
+[1] 2+1i
+
+
+[Execution complete with exit code 0]
+
+
+7.Write a program to multiply two numbers using a function with a default value. Assume default value as NULL.
+Program:
+multiply<-function(a,b){
+    return a*b
+}
+multiply()
+
+
+Output:
+Error: unexpected symbol in:
+"multiply<-function(a,b){
+    return a"
+Execution halted
+
+
+[Execution complete with exit code 1]
+
+
+8.Find sum, mean and product of vector elements using built-in functions.
+Program:
+a<-c(1,2,3,4,5)
+sum(a)
+mean(a)
+prod(a)
+Output:
+[1] 15
+[1] 3
+[1] 120
+
+
+[Execution complete with exit code 0]
+
+
+9.Sort a vector in R using sort() function. Also find the index of the sorted vector.
+Program:
+a<-c(1,2,5,4,3)
+sort(a)
+
+
+Output:
+[1] 1 2 3 4 5
+
+
+[Execution complete with exit code 0]
+
+
+10.Find the L.C.M of two numbers entered by the user by creating a user-defined function.
+Program:
+lcm <- function(x, y) {
+if(x > y) {
+greater = x
+} else {
+greater = y
+}
+while(TRUE) {
+if((greater %% x == 0) && (greater %% y == 0)) {
+lcm = greater
+break
+}
+greater = greater + 1
+}
+return(lcm)
+}
+num1 = as.integer(readline(prompt = "Enter first number: "))
+num2 = as.integer(readline(prompt = "Enter second number: "))
+print(paste("The L.C.M. of", num1,"and", num2,"is", lcm(num1, num2)))
+
+
+Output:
+Enter first number: 24
+Enter second number: 25
+[1] "The L.C.M. of 24 and 25 is 600"
+4.IMPLEMENTATION OF VECTOR RECYCLING,APPLY FAMILY & RECURSION
+
+
+1. Demonstrate Vector Recycling in R.
+Program:
+a <- c(10, 20, 30, 40, 50)
+b <- c(4, 5)
+result <- a + b
+print(result)
+
+
+Output:
+Warning message:
+In a + b : longer object length is not a multiple of shorter object length
+[1] 14 25 34 45 54
+
+
+[Execution complete with exit code 0]
+
+
+2. Demonstrate the usage of apply function in R 
+Program:
+m1 <- matrix(C<-(1:10),nrow=5, ncol=6)
+m1
+m2 <- apply(m1, 2, sum)
+m2
+
+
+Output:
+    [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    1    6    1    6    1    6
+[2,]    2    7    2    7    2    7
+[3,]    3    8    3    8    3    8
+[4,]    4    9    4    9    4    9
+[5,]    5   10    5   10    5   10
+[1] 15 40 15 40 15 40
+
+
+[Execution complete with exit code 0]
+
+
+3. Demonstrate the usage of lapply function in R
+Program:
+name<-list("VIRAT","ROHIT","GILL")
+name_1<-lapply(name,tolower)
+name_1
+
+
+Output:
+[[1]]
+[1] "virat"
+
+
+[[2]]
+[1] "rohit"
+
+
+[[3]]
+[1] "gill"
+
+
+
+
+[Execution complete with exit code 0]
+
+
+4. Demonstrate the usage of sapply function in R
+Program:
+name<-list("VIRAT","ROHIT","GILL")
+name_1<-sapply(name,tolower)
+name_1
+
+
+Output:
+"rohit" "gill" 
+
+
+[Execution complete with exit code 0]
+
+
+5. Demonstrate the usage of tapply function in R
+Program:
+data(iris)
+tapply(iris$Sepal.Width, iris$Species, median)
+
+
+Output:
+setosa versicolor  virginica 
+       3.4        2.8        3.0 
+
+
+[Execution complete with exit code 0]
+
+
+6. Demonstrate the usage of mapply function in R
+Program:
+vector1 <- c(1, 2, 3, 4, 5)
+vector2 <- c(2, 4, 1, 2, 10)
+mapply(max, vector1, vector2)
+Output:
+[1]  2  4  3  4 10
+
+
+[Execution complete with exit code 0]
+
+
+7. Sum of Natural Numbers using Recursion
+Program:
+sum<- function(n) {
+if(n <= 1) {
+return(n)
+} else {
+return(n + sum(n-1))
+}
+}
+sum(5)
+
+
+Output:
+[1] 15
+
+
+[Execution complete with exit code 0]
+
+
+8. Write a program to generate Fibonacci sequence using Recursion in R
+Program:
+recurse_fibonacci <- function(n) {
+if(n <= 1) {
+return(n)
+} else {
+return(recurse_fibonacci(n-1) + recurse_fibonacci(n-2))
+}
+}
+nterms = as.integer(readline(prompt="How many terms? "))
+if(nterms <= 0) {
+print("Plese enter a positive integer")
+} else {
+print("Fibonacci sequence:")
+for(i in 0:(nterms-1)) {
+print(recurse_fibonacci(i))
+}
+}
+Output:
+How many terms? 9
+[1] "Fibonacci sequence:"
+[1] 0
+[1] 1
+[1] 1
+[1] 2
+[1] 3
+[1] 5
+[1] 8
+[1] 13
+[1] 21
+9. Write a program to find the factorial of a number in R using recursion.
+Program:
+fact<-function(a)
+{
+if(a>0)
+{
+return(a*fact(a-1))
+}
+else
+{
+return(1)
+}
+}
+fact(5)
+
+
+
+
+Output:
+[1] 120
+
+
+[Execution complete with exit code 0]
+
+
+
+
+
+
+
+
+
