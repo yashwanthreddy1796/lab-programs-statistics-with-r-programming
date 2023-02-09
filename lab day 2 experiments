@@ -1,0 +1,744 @@
+SAVEETHA SCHOOL OF ENGINEERING
+SAVEETHA INSTITUTE OF MEDICALAND TECHNICAL SCIENCES
+ITA 0443 - STATISTICS WITH R PROGRAMMING FOR REAL TIME PROBLEM
+LAB MANUAL PART 1
+NAME: B.YASHWANTH REDDY
+R.NO: 191911560
+DATE: 09-02-2023
+IMPLEMENTATION OF VECTOR RECYCLING, APPLY FAMILY & RECURSION
+1. Demonstrate Vector Recycling in R.
+Program:
+a <- c(10, 20, 30, 40, 50)
+b <- c(4, 5)
+result <- a + b
+print(result)
+Output:
+Warning message:
+In a + b : longer object length is not a multiple of shorter object length [1] 14 25 34 45 54
+[Execution complete with exit code 0]
+2. Demonstrate the usage of apply function in R
+Program:
+m1 <- matrix(C<-(1:10),nrow=5, ncol=6)
+m1
+m2 <- apply(m1, 2, sum)
+m2
+Output:
+[,1] [,2] [,3] [,4] [,5] [,6]
+[1,] 1 6 1 6 1 6 [2,] 2 7 2 7 2 7 [3,] 3 8 3 8 3 8
+[4,] 4 9 4 9 4 9 [5,] 5 10 5 10 5 10 [1] 15 40
+15 40 15 40
+[Execution complete with exit code 0]
+3. Demonstrate the usage of lapply function in R
+Program:
+name<-list("VIRAT","ROHIT","GILL")
+name_1<-lapply(name,tolower)
+name_1
+Output:
+[[1]]
+[1] "virat"
+[[2]]
+[1] "rohit"
+[[3]]
+[1] "gill"
+[Execution complete with exit code 0]
+4. Demonstrate the usage of sapply function in R
+Program:
+name<-list("VIRAT","ROHIT","GILL")
+name_1<-sapply(name,tolower)
+name_1
+Output:
+"rohit" "gill"
+[Execution complete with exit code 0]
+5. Demonstrate the usage of tapply function in R
+Program:
+data(iris)
+tapply(iris$Sepal.Width, iris$Species, median)
+Output:
+setosa versicolor virginica
+3.4 2.8 3.0
+[Execution complete with exit code 0]
+6. Demonstrate the usage of mapply function in R
+Program:
+vector1 <- c(1, 2, 3, 4, 5)
+vector2 <- c(2, 4, 1, 2, 10)
+mapply(max, vector1, vector2)
+Output:
+[1] 2 4 3 4 10
+[Execution complete with exit code 0]
+7. Sum of Natural Numbers using Recursion
+Program:
+sum<- function(n) {
+if(n <= 1) {
+return(n)
+} else {
+return(n + sum(n-1))
+}
+}
+sum(5)
+Output:
+[1] 15
+[Execution complete with exit code 0]
+8. Write a program to generate Fibonacci sequence using Recursion in R
+Program:
+recurse_fibonacci <- function(n) {
+if(n <= 1) {
+return(n)
+} else {
+return(recurse_fibonacci(n-1) + recurse_fibonacci(n-2))
+}
+}
+nterms = as.integer(readline(prompt="How many terms? "))
+if(nterms <= 0) {
+print("Plese enter a positive integer")
+} else {
+print("Fibonacci sequence:")
+for(i in 0:(nterms-1)) {
+print(recurse_fibonacci(i))
+}
+}
+Output:
+How many terms? 9
+[1] "Fibonacci sequence:"
+[1] 0
+[1] 1
+[1] 1
+[1] 2
+[1] 3
+[1] 5
+[1] 8
+[1] 13
+[1] 21
+9. Write a program to find the factorial of a number in R using recursion.
+Program:
+fact<-function(a)
+{
+if(a>0)
+{
+return(a*fact(a-1))
+}
+else
+{
+return(1)
+}
+}
+fact(5)
+Output:
+[1] 120
+[Execution complete with exit code 0]
+CREATION AND MANIPULATION OF DATAFRAMES IN R
+Exercise 1
+Consider two vectors: x=seq(1,43,along.with=Id)
+y=seq(-20,0,along.with=Id)
+Create a data frame ‘df’ as shown below.
+>df
+Id Letter x y
+1 1 a 1.000000 -20.000000
+2 1 b 4.818182 -18.181818
+3 1 c 8.636364 -16.363636
+4 2 a 12.454545 -14.545455
+5 2 b 16.272727 -12.727273
+6 2 c 20.090909 -10.909091
+7 3 a 23.909091 -9.090909
+8 3 b 27.727273 -7.272727
+9 3 c 31.545455 -5.454545
+10 4 a 35.363636 -3.636364
+11 4 b 39.181818 -1.818182
+12 4 c 43.000000 0.000000
+Program:
+Id = rep(1:4, each = 3)
+x=seq(1,43,along.with=Id)
+y=seq(-20,0,along.with=Id)
+Letter=rep(letters[1:3],4)
+df=data.frame(Id,Letter,x,y)
+df
+Output:
+Id Letter x y
+1 1 a 1.000000 -20.000000
+2 1 b 4.818182 -18.181818
+3 1 c 8.636364 -16.363636
+4 2 a 12.454545 -14.545455
+5 2 b 16.272727 -12.727273
+6 2 c 20.090909 -10.909091
+7 3 a 23.909091 -9.090909
+8 3 b 27.727273 -7.272727
+9 3 c 31.545455 -5.454545
+10 4 a 35.363636 -3.636364
+11 4 b 39.181818 -1.818182
+12 4 c 43.000000 0.000000
+Exercise 2
+Using the data frame ‘df’ in Exercise1, Construct the following data frame. Id x.ay.ax.by.bx.cy.c 1 1
+1.00000 -20.000000 4.818182 -18.181818 8.636364 -16.363636 4 2 12.45455 -14.545455 16.272727
+-12.727273 20.090909 -10.909091 7 3 23.90909 -9.090909 27.727273 -7.272727 31.545455 -5.454545
+10 4 35.36364 -3.636364 39.181818 -1.818182 43.000000 0.000000
+Program:
+df_new <- data.frame(Id=unique(df$Id))
+df_new$x.a <- df[df$Letter == "a", "x"]
+df_new$y.a <- df[df$Letter == "a", "y"]
+df_new$x.b <- df[df$Letter == "b", "x"]
+df_new$y.b <- df[df$Letter == "b", "y"]
+df_new$x.c <- df[df$Letter == "c", "x"]
+df_new$y.c <- df[df$Letter == "c", "y"]
+Output:
+Id x.a y.a x.b y.b x.c y.c
+1 1 1.000000 -20.00000 4.81818 -18.18182 8.63636 -16.36364
+2 2 12.454545 -14.54545 16.27273 -12.72727 20.09091 -10.90909
+3 3 23.909091 -9.09091 27.72727 -7.27273 31.54545 -5.45455
+4 4 35.363636 -3.63636 39.18182 -1.81818 43.00000 0.00000
+Exercise 3
+Create two data frame df1 and df2:
+> df1
+Id Age
+1 1 14
+2 2 12
+3 3 15
+4 4 10
+> df2
+Id Sex Code
+1 1 F a
+2 2 M b
+3 3 M c
+4 4 F d
+From df1 and df2 create M:
+>M
+Id Age Sex Code
+1 1 14 F a
+2 2 12 M b
+3 3 15 M c 4 4 10 F d
+Program:
+df1 <- data.frame(Id = c(1, 2, 3, 4), Age = c(14, 12, 15, 10))
+df2 <- data.frame(Id = c(1, 2, 3, 4), Sex = c("F", "M", "M", "F"), Code = c("a", "b", "c", "d"))
+M <- merge(df1, df2, by = "Id")
+Output:
+Id Age Sex Code
+1 1 14 F a
+2 2 12 M b
+3 3 15 M c
+4 4 10 F d
+Exercise 4
+Create a data frame df3:
+> df3 id2 score 1
+4 100
+2 3 98
+3 2 94
+4 1 99
+From M (used in Exercise-3) and df3 create N:
+Id Age Sex Code score
+1 1 14 F a 99
+2 2 12 M b 94
+3 3 15 M c 98 4 4 10 F d 100
+Program:
+df1 <- data.frame(Id = c(1, 2, 3, 4), Age = c(14, 12, 15, 10))
+df2 <- data.frame(Id = c(1, 2, 3, 4), Sex = c("F", "M", "M", "F"), Code = c("a", "b", "c", "d"))
+M <- merge(df1, df2, by = "Id")
+df3 <- data.frame(id2 = c(4, 3, 2, 1), score = c(100, 98, 94, 99))
+N <- merge(M, df3, by.x = "Id", by.y = "id2")
+Output:
+Id Age Sex Code score
+1 1 14 F a 99
+2 2 12 M b 94
+3 3 15 M c 98
+4 4 10 F d 100
+Exercise 5
+Consider the previous one data frame N:
+1) Remove the variables Sex and Code
+2) From N, create a data frame:
+values ind
+1 1 Id
+2 2 Id
+3 3 Id
+4 4 Id
+5 14 Age
+6 12 Age
+7 15 Age
+8 10 Age
+9 99 score
+10 94 score
+11 98 score
+12 100 score
+Program:
+N_without_sex_code <- N[,c("Id", "Age", "score")]
+values <- c(N_without_sex_code$Id, N_without_sex_code$Age, N_without_sex_cod$score)
+ind <- c(rep("Id", 4), rep("Age", 4), rep("score", 4))
+df_values_ind <- data.frame(values, ind)
+Output:
+values ind
+1 1 Id
+2 2 Id
+3 3 Id
+4 4 Id
+5 14 Age
+6 12 Age
+7 15 Age
+8 10 Age
+9 99 score
+10 94 score
+11 98 score
+12 100 score
+Exercise 6
+For this exercise, we’ll use the (built-in) dataset trees.
+a) Make sure the object is a data frame, if not change it to a data frame.
+b) Create a new data frame A:
+>A
+Girth Height Volume
+mean_tree 13.24839 76 30.17097
+min_tree 8.30000 63 10.20000
+max_tree 20.60000 87 77.00000
+sum_tree 410.70000 2356 935.30000
+Program:
+if (!is.data.frame(trees)) {
+trees <- as.data.frame(trees)
+}
+A <- data.frame(Girth = c(mean(trees$Girth), min(trees$Girth), max(trees$Girth), sum(trees$Girth)),
+Height = c(mean(trees$Height), min(trees$Height), max(trees$Height), sum(trees$Height)),
+Volume = c(mean(trees$Volume), min(trees$Volume), max(trees$Volume),
+sum(trees$Volume)))
+rownames(A) <- c("mean_tree", "min_tree", "max_tree", "sum_tree")
+Output:
+Girth Height Volume
+mean_tree 13.24839 76 30.17097
+min_tree 8.30000 63 10.20000
+max_tree 20.60000 87 77.00000
+sum_tree 410.70000 2356 935.30000
+Exercise 7
+Consider the data frame A:
+1)Order the entire data frame by the first column.
+2)Rename the row names as follows: mean, min, max, tree
+Program:
+A_sorted <- A[order(A[,1]),]
+rownames(A_sorted) <- c("mean", "min", "max", "sum")
+A_sorted
+Output:
+Girth Height Volume
+min 8.30000 63 10.20000
+mean 13.24839 76 30.17097
+max 20.60000 87 77.00000
+sum 410.70000 2356 935.30000
+Exercise 8
+Create an empty data frame with column types:
+>df
+IntsLogicals Doubles Characters
+(or 0-length row.names)
+Program:
+df <- data.frame(Ints=integer(), Logicals=logical(), Doubles=numeric(), Characters=character(),
+stringsAsFactors=FALSE)
+df
+Output:
+Ints Logicals Doubles Characters
+1 NA NA NA NA
+Exercise 9
+Create a data frame XY
+X=c(1,2,3,1,4,5,2)
+Y=c(0,3,2,0,5,9,3)
+> XY
+X Y
+1 1 0
+2 2 3
+3 3 2
+4 1 0
+5 4 5
+6 5 9
+7 2 3
+1) look at duplicated elements using a provided R function.
+2) keep only the unique lines on XY using a provided R function.
+Program:
+X = c(1, 2, 3, 1, 4, 5, 2)
+Y = c(0, 3, 2, 0, 5, 9, 3)
+XY = data.frame(X, Y)
+duplicates = duplicated(XY)
+XY_unique = unique(XY)
+Output:
+XY_unique
+X Y
+1 1 0
+2 2 3
+3 3 2
+4 4 5
+5 5 9
+Exercise 10
+Use the (built-in) dataset Titanic.
+a) Make sure the object is a data frame, if not change it to a data frame.
+b) Define a data frame with value 1st in Class variable, and value NO in Survived variable and variables
+Sex, Age and Freq.
+Sex Age Freq
+1 Male Child 0
+5 Female Child 0
+9 Male Adult 118
+13 Female Adult 4
+Program:
+data("Titanic")
+df <- as.data.frame(Titanic)
+df1 <- subset(df, Class == "1st" & Survived == "NO")
+df2 <- data.frame(Sex = c("Male", "Female", "Male", "Female"),
+Age = c("Child", "Child", "Adult", "Adult"),
+Freq = c(sum(df1$Sex == "male" & df1$Age == "Child"),
+sum(df1$Sex == "female" & df1$Age == "Child"),
+sum(df1$Sex == "male" & df1$Age == "Adult"),
+sum(df1$Sex == "female" & df1$Age == "Adult")))
+Output:
+Sex Age Freq
+1 Male Child 0
+5 Female Child 0
+9 Male Adult 118
+13 Female Adult 4
+MERGING DATAFRAMES
+Exercise 11 a)
+Create the following dataframes to merge:
+buildings<- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+The dataframes, buildingsand datahave a common key variable called, “location”.
+Use the merge() function to merge the two dataframes by “location”, into a new
+dataframe,“buildingStats”.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 1 building1 2 58
+3 2 building2 1 64
+4 2 building2 2 7
+5 3 building3 1 70
+6 3 building3 2 80
+Exercise 11 b)
+Give the dataframes different key variable names:
+buildings<- data.frame(location=c(1, 2, 3), name=c("building1","building2", "building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2), LocationID=c(1,2,3,2,3,1),
+efficiency=c(51,64,70,71,80,58))
+The dataframes, buildings and data have corresponding variables called, location, and LocationID. Use
+the merge() function to merge the columns of the two dataframes by the corresponding variables.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+buildingStats <- merge(buildings, data, by.x = "location", by.y = "LocationID")
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 1 building1 2 58
+3 2 building2 1 64
+4 2 building2 2 71
+5 3 building3 1 70
+6 3 building3 2 80
+DIFFERENT TYPES OF MERGE IN R
+Exercise 12a)InnerJoin:
+The R merge() function automatically joins the frames by common variable names. In that case,
+demonstrate how you would perform the merge in Exercise 11a without specifying the key variable.
+Program:
+buildings <- data.frame(location = c(1, 2, 3), name = c("building1", "building2", "building3")) data <-
+data.frame(survey = c(1, 1, 1, 2, 2, 2), LocationID = c(1, 2, 3, 2, 3, 1), efficiency = c(51, 64, 70, 71, 80,
+58))
+merge(buildings, data)
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 1 building1 2 58
+3 2 building2 1 64
+4 2 building2 2 71
+5 3 building3 1 70
+6 3 building3 2 80
+Exercise 12b)OuterJoin:
+Merge the two dataframes from Exercise 11a. Use the “all=” parameter in the merge() function to return
+all records from both tables. Also, merge with the key variable, “location”.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2", "building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2), location=c(1,2,3,2,3,1), efficiency=c(51,64,70,71,80,58))
+buildingStats <- merge(buildings, data, by="location", all=TRUE)
+buildingStats
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 1 building1 2 58
+3 2 building2 1 64
+4 2 building2 2 71
+5 3 building3 1 70
+6 3 building3 2 80
+Exercise 12c)Left Join:
+Merge the two dataframes from Exercise 11a, and return all rows from the left table. Specify the
+matching key from Exercise 11a.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+buildings <- data.frame(location = c(1, 2, 3), name = c("building1", "building2", "building3"))
+data <- data.frame(survey = c(1,1,1,2,2,2), location = c(1,2,3,2,3,1), efficiency = c(51,64,70,71,80,58))
+left_join <- merge(buildings, data, by = "location", all.x = TRUE)
+left_join
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 2 building2 1 64
+3 2 building2 2 71
+4 3 building3 1 70
+5 3 building3 2 80
+Exercise 12d)Right Join:
+Merge the two dataframes from Exercise 11a, and return all rows from the right table. Use the matching
+key from Exercise 11a to return matching rows from the left table.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+buildings <- data.frame(location = c(1, 2, 3), name = c("building1", "building2", "building3"))
+data <- data.frame(survey = c(1,1,1,2,2,2), location = c(1,2,3,2,3,1), efficiency = c(51,64,70,7,80,58))
+right_join <- merge(buildings, data, by = "location", all.y = TRUE)
+right_join
+Output:
+location name survey efficiency
+1 1 building1 1 51
+2 2 building2 1 64
+3 2 building2 2 71
+4 3 building3 1 70
+5 3 building3 2 80
+Exercise 12e)Cross Join:
+Merge the two dataframes from Exercise 11a, into a “Cross Join” with each row of “buildings” matched
+to each row of “data”. What new column names are created in “buildingStats”?
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2","building3"))
+data <- data.frame(survey=c(1,1,1,2,2,2),location=c(1,2,3,2,3,1),efficiency=c(51,64,70,7,80,58))
+buildingStats <- merge(buildings, data, by="location")
+buildings <- data.frame(location = c(1, 2, 3), name = c("building1", "building2", "building3"))
+data <- data.frame(survey = c(1,1,1,2,2,2), location = c(1,2,3,2,3,1), efficiency = c(51,64,70,71,80,58))
+buildingStats <- merge(buildings, data)
+Output:
+location name survey LocationID efficiency
+1 1 building1 1 1 51
+2 1 building1 1 2 64
+3 1 building1 1 3 70
+4 1 building1 2 2 71
+5 1 building1 2 3 80
+6 1 building1 2 1 58
+7 2 building2 1 1 51
+8 2 building2 1 2 64
+9 2 building2 1 3 70
+10 2 building2 2 2 71
+11 2 building2 2 3 80
+12 2 building2 2 1 58
+13 3 building3 1 1 51
+14 3 building3 1 2 64
+15 3 building3 1 3 70
+16 3 building3 2 2 71
+17 3 building3 2 3 80
+18 3 building3 2 1 58
+Exercise 13MergingDataframe rows:
+To join two data frames (datasets) vertically, use the rbind function. The two data frames must have the
+same variables, but they do not have to be in the same order.
+Merge the rows of the following two dataframes:
+buildings<- data.frame(location=c(1, 2, 3), name=c("building1",
+"building2", "building3"))
+buildings2 <- data.frame(location=c(5, 4, 6), name=c("building5", "building4", "building6"))
+Also, specify the new dataframe as, “allBuidings”.
+Program:
+buildings <- data.frame(location=c(1, 2, 3), name=c("building1", "building2", "building3"))
+buildings2 <- data.frame(location=c(5, 4, 6), name=c("building5", "building4", "building6"))
+allBuildings <- rbind(buildings, buildings2)
+Output:
+location name
+1 1 building1
+2 2 building2
+3 3 building3
+4 5 building5
+5 4 building4
+6 6 building6+
+Exercise 14
+Create a new dataframe, buildings3, that has variables not found in the previous dataframes.
+buildings3 <- data.frame(location=c(7, 8, 9), name=c("building7", "building8", "building9"),
+startEfficiency=c(75,87,91))
+Create a new buildings3 without the extra variables.
+Program:
+buildings3_new <- subset(buildings3, select = c("location", "name"))
+buildings3_new <- buildings3[, c("location", "name")]
+buildings3_new
+Output:
+location name
+1 7 building7
+2 8 building8
+3 9 building9
+Exercise 15
+Instead of deleting the extra variables from buildings3
+. append the buildings, and buildings2 with the
+new variable in buildings3, (from Exercise 14). Set the new data in buildings and buildings2
+, (from
+Exercise 13), to NA.
+Program:
+buildings3_new <- subset(buildings3, select = c("location", "name"))
+buildings3_new <- buildings3[, c("location", "name")]
+buildings3_new
+buildings$startEfficiency <- NA
+buildings2$startEfficiency <- NA
+allBuildings <- rbind(buildings, buildings2, buildings3)
+allBuildings
+Output:
+location name startEfficiency
+1 1 building1 NA
+2 2 building2 NA
+3 3 building3 NA
+4 5 building5 NA
+5 4 building4 NA
+6 6 building6 NA
+7 7 building7 75
+8 8 building8 87
+9 9 building9 91
+
+
+
+SAVEETHA SCHOOL OF ENGINEERING
+SAVEETHA INSTITUTE OF MEDICALAND TECHNICAL SCIENCES
+ITA 0443 - STATISTICS WITH R PROGRAMMING FOR REAL TIME PROBLEM
+LAB MANUAL PART 2
+NAME: B.YASHWANTH REDDY
+R.NO: 191911560
+DATE: 09-02-2023
+RESHAPE FUNCTION IN R
+Exercise: 1
+Construct the following data frame ‘country’.
+Program:
+country<-data.frame(c("A","B","C"),c(100,200,120),c(2000,7000,15000))
+colnames(country)<- c("countries","population_in_million","gdp_percapita")
+print(country)
+Output:
+countries population_in_million gdp_percapita
+1 A 100 2000
+2 B 200 7000
+3 C 120 15000
+a) Reshape in R from wide to long:
+Reshape the above data frame from wide to long format in R.
+● data frame “country” is passed to reshape function
+● idvar is the variable which need to be left unaltered which is “countries”
+● varying are the ones that needs to converted from wide to long
+● v.names are the values that should be against the times in the resultant data frame.
+● new.row.names is used to assign row names to the resultant dataset
+● direction is, to which format the data needs to be transformed
+Program:
+country1<- reshape(data=country, idvar="countries",
+varying = c("population_in_million","gdp_percapita"),
+v.name=c("value"),
+times=c("population_in_million","gdp_percapita"),
+new.row.names = 1:1000,
+direction="long")
+print(country1)
+Output:
+countries time value
+1 A population_in_million 100
+2 B population_in_million 200
+3 C population_in_million 120
+4 A gdp_percapita 2000
+5 B gdp_percapita 7000
+6 C gdp_percapita 15000
+b) Reshape in R from long to wide:
+● data (country_w_to_L) which is in long format, is passed to reshape function
+● idvar is the variable which need to be left unaltered, which is “countries”
+● timevar are the variables that needs to converted to wide format
+● v.names are the value variable
+● direction is, to which format the data needs to be transformed
+Program:
+country2 <- reshape(data=country1,idvar="countries",
+v.names = "value",
+timevar = "time",
+direction="wide")
+print(country2)
+Output:
+countries value.population_in_million value.gdp_percapita
+1 A 100 2000
+2 B 200 7000
+3 C 120 15000
+7. MELTING AND CASTING IN R
+Exercises :
+1. Melt airquality data set and display as a long – format data ?
+2. Melt airquality data and specify month and day to be “ID variables” ?
+3. Cast the molten airquality data set .
+4. Use cast function appropriately and compute the average of Ozone, Solar.R , Wind and
+temperature per month ?
+Program:
+names(airquality) <- tolower(names(airquality))
+head(airquality)
+aql <- melt(airquality, id.vars = c("month", "day"))
+head(aql)
+Output:
+ozone solar.r wind temp month day
+1 41 190 7.4 67 5 1
+2 36 118 8.0 72 5 2
+3 12 149 12.6 74 5 3
+4 18 313 11.5 62 5 4
+5 NA NA 14.3 56 5 5
+6 28 NA 14.9 66 5 6
+## month day variable value
+## 1 5 1 ozone 41
+## 2 5 2 ozone 36
+## 3 5 3 ozone 12
+## 4 5 4 ozone 18
+## 5 5 5 ozone NA
+## 6 5 6 ozone 28
+8 FILE MANUPULATION IN R
+Exercise
+1. Consider the following data present. Create this file using windows notepad . Save the file
+as input.csv using the save As All files(*.*) option in notepad.
+2. Use appropriate R commands to read input.csv file.
+Program:
+data <- read.csv("input.csv")
+print(data)
+Output:
+id name salary start_date dept
+1 1 Rick 623.30 2012-01-01 IT
+2 2 Dan 515.20 2013-09-23 Operations
+3 3 Michelle 611.00 2014-11-15 IT
+4 4 Ryan 729.00 2014-05-11 HR
+5 5 Gary 843.25 2015-03-27 Finance
+6 6 Nina 578.00 2013-05-21 IT
+7 7 Simon 632.80 2013-07-30 Operations
+8 8 Guru 722.50 2014-06-17 Finance
+3. Analyze the CSV File and compute the following.
+a. Get the maximum salary
+Program:
+sal <- max(data$salary)
+print(sal)
+Output:
+[1] 843.25
+b. Get the details of the person with max salary
+Program:
+retval <- subset(data, salary == max(salary))
+print(retval)
+Output:
+id name salary start_date dept
+5 5 Gary 843.25 2015-03-27 Finance
+c. Get all the people working in IT department
+Program:
+retval <- subset( data, dept == "IT")
+print(retval)
+Output:
+id name salary start_date dept
+1 1 Rick 623.3 2012-01-01 IT
+3 3 Michelle 611.0 2014-11-15 IT
+6 6 Nina 578.0 2013-05-21 IT
+d. Get the persons in IT department whose salary is greater than 600
+Program:
+info <- subset(data, salary > 600 & dept == "IT")
+print(info)
+Output:
+id name salary start_date dept
+1 1 Rick 623.3 2012-01-01 IT
+3 3 Michelle 611.0 2014-11-15 IT
+e. Get the people who joined on or after 2014
+Program:
+retval <- subset(data, as.Date(start_date) > as.Date("2014-01-01"))
+print(retval)
+Output:
+id name salary start_date dept
+3 3 Michelle 611.00 2014-11-15 IT
+4 4 Ryan 729.00 2014-05-11 HR
+5 5 Gary 843.25 2015-03-27 Finance
+8 8 Guru 722.50 2014-06-17 Finance
+4. Get the people who joined on or after 2014 and write the output onto a file called
+output.csv
+Program:
+write.csv(retval,"output.csv")
+newdata <- read.csv("output.csv")
+print(newdata)
+Output:
+X id name salary start_date dept
+1 3 3 Michelle 611.00 2014-11-15 IT
+2 4 4 Ryan 729.00 2014-05-11 HR
+3 5 5 Gary 843.25 2015-03-27 Finance
+4 8 8 Guru 722.50 2014-06-17 Finance
