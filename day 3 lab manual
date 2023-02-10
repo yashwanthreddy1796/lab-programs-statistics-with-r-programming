@@ -1,0 +1,203 @@
+SAVEETHA SCHOOL OF ENGINEERING 
+SAVEETHA INSTITUTE OF MEDICALAND TECHNICAL SCIENCES ITA 0443 - STATISTICS WITH R PROGRAMMING FOR REAL TIME PROBLEM 
+DAY 3 – LAB MANUAL 
+NAME: B.YASHWANTH REDDY 
+R.NO: 191911560 
+DATE: 10-02-2023 
+UNIVARIATE ANALYSIS IN R - MEASURES OF CENTRAL TENDENCY Exercise: 
+I. ARITHMETIC MEAN 
+a) Write suitable R code to compute the average of the following values. 12,7,3,4.2,18,2,54,-21,8,-5 
+b) Compute the mean after applying the trim option and removing 3 values from each end. 
+c) Compute the mean of the following vector . 
+(12,7,3,4.2,18,2,54,-21,8,-5,NA) 
+#If there are missing values, then the mean function returns NA. 
+# Find mean dropping NA values. 
+#To drop the missing values from the calculation use na.rm = TRUE Program:
+a = c(12,7,3,4.2,18,2,54,-21,8,-5) 
+avg = mean(a) print(avg) 
+Output : 
+> 
+> source("~/.active-rstudio-document") [1] 8.22 
+b)Code: 
+x <- c(12,7,3,4.2,18,2,54,-21,8,-5) result.mean <- mean(x,trim = 0.3) print(result.mean) Output : 
+> source("~/.active-rstudio-document") [1] 5.55 
+c) Code: 
+x <- c(12,7,3,4.2,18,2,54,-21,8,-5,NA) result.mean<-mean(x) 
+print(result.mean) result.mean <- mean(x,na.rm = TRUE) print(result.mean) 
+Output: 
+> source("~/.active-rstudio-document")
+[1] 5.55 
+[1] NA 
+[1] 8.22 
+II.MEDIAN 
+Write suitable R code to compute the median of the following values. 12,7,3,4.2,18,2,54,-21,8,-5 
+Code : 
+a = c(12,7,3,4.2,18,2,54,-21,8,-5) 
+M = median(a) 
+print(M) 
+Output: 
+[1] 5.6 
+III. MODE 
+Calculate the mode for the following numeric as well as character data set in R. (2,1,2,3,1,2,3,4,1,5,5,3,2,3) , ("o","it","the","it","it") 
+Code : 
+getmode <- function(v) { uniqv <- unique(v) 
+uniqv[which.max(tabulate(match(v, 
+uniqv)))] 
+} 
+v <- c(2,1,2,3,1,2,3,4,1,5,5,3,2,3)
+result <- getmode(v) print(result) 
+charv <- c("o","it","the","it","it") 
+result <- getmode(charv) print(result) 
+Output : 
+> source("~/.active-rstudio-document") 
+[1] 2 
+[1] "it" 
+UNIVARIATE ANALYSIS IN R - MEASURES OF DISPERSION Exercise: 1 
+Download mpg dataset which contains Fuel economy data from 1999 and 2008 for 38 popular models of car from the URL given below. 
+https://vincentarelbundock.github.io/Rdatasets/datasets.html 
+Answer the following queries 
+i) Find the car which gives maximum city miles per gallon 
+ii) Find the cars which gives minimum disp in compact and subcompact class i) CODE : 
+> View(mpg) 
+> data(mpg) 
+> summary(mpg)
+> str(mpg) > 
+max(displ) 
+Output : 
+manufacturer model displ year cyl 
+Length:234 Length:234 Min. :1.600 Min. :1999 Min. :4.000 
+Class :character Class :character 1st Qu.:2.400 1st Qu.:1999 1st Qu.:4.000 
+Mode :character Mode :character Median :3.300 Median :2004 Median :6.000 
+Mean :3.472 Mean :2004 Mean 
+:5.889 
+3rd Qu.:4.600 3rd Qu.:2008 3rd 
+Qu.:8.000 
+Max. :7.000 Max. :2008 Max. 
+:8.000 trans drv cty hwy fl 
+Length:234 Length:234 Min. : 9.00 Min. :12.00 Length:234 
+Class :character Class :character 1st Qu.:14.00 1st Qu.:18.00 Class :character 
+Mode :character Mode :character Median :17.00 Median :24.00 Mode :character 
+Mean :16.86 Mean :23.44 
+3rd Qu.:19.00 3rd Qu.:27.00 
+Max. :35.00 Max. :44.00 
+class 
+Length:234 
+Class :character 
+Mode :character
+> str(mpg) tibble [234 × 11] (S3: 
+tbl_df/tbl/data.frame) 
+$ manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ... $ model : chr [1:234] "a4" "a4" "a4" "a4" ... 
+$ displ : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ... 
+$ year : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ... 
+$ cyl : int [1:234] 4 4 4 4 6 6 6 4 4 4 ... 
+$ trans : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ... $ drv : chr [1:234] "f" "f" "f" "f" ... 
+$ cty : int [1:234] 18 21 20 21 16 18 18 18 16 20 ... $ hwy : int [1:234] 29 29 31 30 26 26 27 26 25 28 ... $ fl : chr [1:234] "p" "p" "p" "p" ... 
+$ class : chr [1:234] "compact" "compact" "compact" "compact" ... 
+i) & ii) answer 
+> max(mpg$cty) 
+[1] 35 
+> min(mpg$displ) 
+[1] 1.6 
+Exercise: 2 
+Use the same dataset as used in Exercise 1 and perform the following queries 
+i) Find the standard deviation of city milles per gallon 
+ii) Find the variance of highway milles per gallon 
+i) & ii) 
+> sd(mpg$cty) 
+[1] 4.255946 
+> var(mpg$cty)
+[1] 18.11307 
+Exercise 3 
+Use the same dataset and perform the following queries 
+i) Find the range of the disp in the data set mpg 
+ii) Find the Quartile of the disp in the data set mpg 
+iii) Find the IQR of the disp column in the data set mpg 
+i) & ii) & iii) 
+CODE & OUTPUT : 
+> range(mpg$displ) 
+[1] 1.6 7.0 
+> quantile(mpg$displ) 
+0% 25% 50% 75% 100% 
+1.6 2.4 3.3 4.6 7.0 
+> IQR(mpg$displ) 
+[1] 2.2 
+Exercise 4 
+#Install Library 
+library(e1071) 
+a. Find the skewness of city miles per mileage in the data set mpg ? Use qplot function and display the graph for the city miles per mileage column
+b. Find the kurtosis of city miles per mileage in the data set mpg Use qplot function and display the graph for the city miles per mileage column a) CODE : 
+> library(moments) 
+> x = c(mpg$cty) 
+> skewness(x) 
+[1] 0.7914453 
+> kurtosis(x) 
+[1] 4.468651 
+> library(e1071) 
+> qplot(mpg$cty) 
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`. OUTPUT :
+VISUALIZATION IN R 
+1. Write a program for creating a pie-chart in R using the input vector(21,62,10,53). Provide labels for the chart as ‘London’, ‘New York’, ‘Singapore’, ‘Mumbai’. Add a title to the chart as ‘city pie-chart’ and add a legend at the top right corner of the chart. Code : 
+> a = c(21,62,10,53) 
+> n = c("London","New York","singapore","Mumbai") > pie(a,labels = n, head = "city pie-chart", col = rainbow(length(x)))
+pie(a, labels = n, main = "City pie chart",col = rainbow(length(a)) 
+Output : 
+
+2. Create a 3D Pie Chart for the dataset “political Knowledge” with suitable labels,colours and a legend at the top right corner of the chart. 
+Code : 
+H <- c(7,12,28,3,41) 
+> M <- c("Mar","Apr","May","Jun","Jul") 
+> png(file = "barchart_months_revenue.png") 
+> barplot(H,names.arg=M,xlab="Month",ylab="Revenue",col="blue", + main="Revenue chart",border="red") 
+> dev.off() 
+RStudioGD
+2 > 
+print(barplot(H,names.arg=M,xlab="Month",ylab="Revenue",col="bl ue", + main="Revenue chart",border="red")) [,1] 
+[1,] 0.7 
+[2,] 1.9 
+[3,] 3.1 
+[4,] 4.3 
+[5,] 5.5 
+>
+
+3. Make a histogram for the “AirPassengers“dataset, start at 100 on the x-axis, and from values 200 to 700, make the bins 200 wide 
+Program: 
+print(hist(AirPassengers, 
++ main="Histogram for Air Passengers", 
++ xlab="Passengers", 
++ border="blue", 
++ col="green", 
++ xlim=c(100,700), 
++ las=1, 
++ breaks=5)) 
+$breaks 
+[1] 100 200 300 400 500 600 700 
+$counts 
+[1] 48 34 34 21 5 2 
+$density 
+[1] 0.0033333333 0.0023611111 0.0023611111 0.0014583333 0.0003472222 0.0001388889 
+$mids 
+[1] 150 250 350 450 550 650 
+$xname 
+[1] "AirPassengers" 
+$equidist 
+[1] TRUE
+attr(,"class") 
+[1] "histogram" 
+Output: 
+
+4. Create a Boxplot graph for the relation between "mpg"(miles per galloon) and "cyl"(number of Cylinders) for the dataset "mtcars" available in R Environment. 
+Program:
+png(file = "boxplot_with_notch.png") 
+boxplot(mpg ~ cyl, data = mtcars, 
+xlab = "Number of Cylinders", 
+ylab = "Miles Per Gallon", 
+main = "Mileage Data", notch 
+= TRUE, varwidth = TRUE, 
+col = 
+c("green","yellow","purple"), 
+names = 
+c("High","Medium","Low") 
+) dev.off() 
+Output:
+
+
